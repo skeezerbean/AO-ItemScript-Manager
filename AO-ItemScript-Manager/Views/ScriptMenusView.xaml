@@ -1,0 +1,62 @@
+﻿<UserControl x:Class="AO_ItemScript_Manager.ScriptMenusView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AO_ItemScript_Manager"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<!-- This is our top section -->
+
+		<WrapPanel Margin="10">
+			<TextBlock Text="Select Menu to Edit" Margin="5" />
+			<ComboBox x:Name="ListOfMenus" DisplayMemberPath="ShortName"
+					SelectedItem="{Binding SelectedMenu}" Margin="5" Width="150" />
+
+			<Button x:Name="RefreshMenus" Content="Reload Menus" Margin="5"
+						ToolTip="This will reload from disk, and unsaved changes will be lost" />
+
+			<Button x:Name="SaveMenu" Content="Save Menu Changes" Margin="5" />
+
+			<Button x:Name="CreateMenu" Content="Create New Menu" Margin="5" />
+		</WrapPanel>
+
+		<Grid Grid.Row="1">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- This handles the left side objects -->
+
+			<StackPanel Margin="10" Grid.Column="0">
+				<TextBlock Text="Menu Contents:" Margin="5" />
+
+				<TextBox x:Name="SelectedMenuContent" Margin="5"
+					TextWrapping="WrapWithOverflow"	
+					ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+
+			</StackPanel>
+
+			<!-- Right side objects -->
+
+			<StackPanel Margin="10" Grid.Column="1">
+				<TextBlock Text="Simulated Output Preview" Margin="5" />
+
+				<local:BindableRichTextBox Document="{Binding MenuContentPreview}" Margin="5" 
+					ScrollViewer.VerticalScrollBarVisibility="Auto" />
+
+			</StackPanel>
+
+		</Grid>
+	</Grid>
+</UserControl>

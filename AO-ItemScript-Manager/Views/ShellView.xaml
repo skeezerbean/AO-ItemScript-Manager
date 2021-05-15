@@ -1,0 +1,45 @@
+﻿<mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="AO_ItemScript_Manager.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AO_ItemScript_Manager"
+        mc:Ignorable="d" Closing="MetroWindow_Closing"
+		Icon="/Resources/icon.ico"
+		Title="{Binding AppTitle}" Background="#353535"
+		Height="{Binding WindowHeight, Mode=TwoWay}"
+		Width="{Binding WindowWidth, Mode=TwoWay}"
+		Top="{Binding WindowTop, Mode=TwoWay}"
+		Left="{Binding WindowLeft, Mode=TwoWay}">
+
+	<!-- Right side of title bar -->
+	<mah:MetroWindow.RightWindowCommands>
+		<mah:WindowCommands>
+			<Button Click="HelpAbout" Content="Help / About">
+				<Button.ContentTemplate>
+					<DataTemplate>
+						<StackPanel Orientation="Horizontal">
+							<TextBlock Margin="4 0 4 0"
+                         VerticalAlignment="Center"
+                         Text="Help / About" />
+						</StackPanel>
+					</DataTemplate>
+				</Button.ContentTemplate>
+			</Button>
+		</mah:WindowCommands>
+	</mah:MetroWindow.RightWindowCommands>
+	
+	<Grid>
+		<DockPanel>
+			<WrapPanel DockPanel.Dock="Top" HorizontalAlignment="Center">
+				<Button x:Name="LoadPageScripts" Content="Scripts" Margin="10" />
+				<Button x:Name="LoadPageScriptMenus" Content="Script Menus" Margin="10" />
+				<Button x:Name="LoadPageSettings" Content="Settings" Margin="10" />
+			</WrapPanel>
+			<Border BorderBrush="Black" BorderThickness="3" CornerRadius="10" Margin="5">
+				<!-- ActiveItem is Caliburn, marks this as the active child form -->
+				<ContentControl x:Name="ActiveItem" />
+			</Border>
+		</DockPanel>
+    </Grid>
+</mah:MetroWindow>
